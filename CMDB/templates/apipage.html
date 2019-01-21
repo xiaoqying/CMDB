@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title %}SaltApi管理{% endblock %}
+{% block hostpage %}
+<div class="bs-example " data-example-id="hoverable-table">
+    <h1 align="center">SaltApi管理</h1>
+    <hr>
+        <div>
+             <form method="post">
+                 <input name="cmd" placeholder="命令"/>
+                 <input name="client" placeholder="minion_id"/>
+                 <input type="submit" class="btn btn-primary btn-ll" value="命令提交"></input>
+                 <pre style="width: 80%;height: 580px">{{ result }}</pre>
+             </form>
+        </div>
+{#        <div>#}
+{#            <input type="submit" class="btn btn-primary btn-ll" value="刷新" ></input>#}
+{#        </div>#}
+{#    {% for k,v in res.items %}#}
+{#        <p>主机名：{{ k  }}</p>#}
+{#        <p>IP地址：{{ v.0 }}</p>#}
+{#        <p>操作系统：{{ v.1 }}</p>#}
+{#        <p>总内存：{{ v.2}}</p>#}
+{#        <hr>#}
+{#    {% endfor %}#}
+</div>
+{% endblock %}

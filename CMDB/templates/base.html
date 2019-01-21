@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %} {% endblock %}</title>
+    <link href="/static/bootstrap-3.3.7-dist/css/bootstrap.css" rel="stylesheet"">
+    <link href="/static/bootstrap-3.3.7-dist/js/bootstrap.js" rel="stylesheet">
+    <style>
+        body{
+            margin: -20px;
+        }
+        .p_head{
+            height: 48px;
+            background: #2aabd2;
+            color: white;
+            line-height:48px ;
+            text-align:center;
+        }
+        .p_menu{
+            position: absolute;
+            top: 48px;
+            bottom: 0;
+            left: 0;
+            width: 200px;
+            background: #1b6d85;
+            display: block;
+            padding: 15px;
+        }
+        .p_right{
+            position: absolute;
+            top: 48px;
+            bottom: 0;
+            left: 220px;
+            right: 0;
+            overflow: auto;
+        }
+        .pageinfo .page{
+            margin: 5px;
+        }
+        .pageinfo .page.active{
+            background-color: #337ab7;
+            color: white;
+        }
+        .display {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="p_head">
+        <h1 align="center">Ying——CMDB</h1>
+    </div>
+    <div>
+        <div class="p_menu">
+            <a href="/hostpage/"><button type="button" class="btn btn-primary btn-lg">资产管理</button></a>
+            <hr>
+            <a href="#"><button type="button" class="btn btn-primary btn-lg">权限管理</button></a>
+            <hr>
+            <a href="#"><button type="button" class="btn btn-primary btn-lg">用户管理</button></a>
+            <hr>
+            <a href="/salt/"><button type="button" class="btn btn-primary btn-lg">API管理</button></a>
+            <hr>
+            <a href="#"><button type="button" class="btn btn-primary btn-lg">监控状态</button></a>
+            <hr>
+            <a href="/logout/"><button type="button" class="btn btn-primary btn-lg">登出</button></a>
+        </div>
+        <div class="p_right">
+            {% block hostpage %}{% endblock %}
+        </div>
+    </div>
+    <script src="../static/jquery.min.js"></script>
+</body>
+</html>
