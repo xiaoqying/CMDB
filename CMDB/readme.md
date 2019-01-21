@@ -3,6 +3,27 @@
 - python==>3.5.2
 - pip==>8.1.1
 - requests==>2.21.0
+## 新系统安装启动教程
+```python
+###########安装python3.5.2#############
+# wget https://www.python.org/ftp/python/3.5.2/Python-3.5.2.tgz
+# tar -zxf Python-3.5.2.tgz 
+# cd Python-3.5.2
+# ./configure --prefix=/usr/local/python3.5
+# make -j8 && make install -j8
+# ln -s /usr/local/python3.5/bin/python3.5 /usr/bin/python3.5
+###########安装pip################
+# wget https://files.pythonhosted.org/packages/41/27/9a8d24e1b55bd8c85e4d022da2922cb206f183e2d18fee4e320c9547e751/pip-8.1.1.tar.gz
+# tar -zxf pip-8.1.1.tar.gz -C /usr/local/
+# cd /usr/local/pip-8.1.1/
+# python3.5 setup.py install
+# pip -V
+########安装模块###########
+# pip install django==1.11
+# pip install requests==2.21.0
+########启动#########
+# python3.5 manage.py runserver 0.0.0.0:8080
+```
 ## 启动及登录
 - **注意:启动之前，需要修改‘CMDB\utils\send_salt_api.py’文件**
   + salt_api： 你自己salt-api的服务器ip 
