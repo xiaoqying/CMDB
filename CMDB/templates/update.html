@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block title %}主机界面{% endblock %}
-{% block hostpage %}
+{% block host_update %}
 <div class="bs-example " data-example-id="hoverable-table">
 <form  method="post">
     <table class="table table-hover">
@@ -32,7 +32,8 @@
       </tbody>
     </table>
     <p>
-        <input type="submit" name="提交">
+        <input type="submit" name="提交" class="btn btn-primary btn-ll">
+        <a class="btn btn-primary btn-ll" href="/host/hostpage" >返回</a>
     </p>
 </form>
 {% endblock %}

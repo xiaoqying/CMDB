@@ -4,12 +4,17 @@ from django.views import View
 from utils import send_salt_api
 from utils import form_class
 from host import models
+import requests
 import json
 
 
 class apilist(View):
-    dic_li = send_salt_api.main()
+    try:
+        dic_li = send_salt_api.main()
+    except requests.exceptions.ConnectionError:
+        print('主机没有反应')
     def get(self, request):
+        one_menu = request.session.get('one_menu')
         # print(request.GET.get('name'))
         if '1' == request.GET.get('name'):
             res = ResApi().parsing(self.dic_li)
@@ -30,6 +35,7 @@ class apilist(View):
             return render(request, 'apipage.html', locals())
 
     def post(self, request):
+        one_menu = request.session.get('one_menu')
         cmd = request.POST.get('cmd')
         client = request.POST.get('client')
         # print(cmd,client)

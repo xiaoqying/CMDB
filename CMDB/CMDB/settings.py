@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'host.apps.DemoConfig',
+    # 'salt.apps.DemoConfig',
 ]
 
 MIDDLEWARE = [
@@ -48,7 +49,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'Middleware.MiddleWare.Order'
+    # 'Middleware.MiddleWare.Order'
 
 ]
 
@@ -127,3 +128,4 @@ STATIC_URL = '/static/'
 #             os.path.join(BASE_DIR,"static")
 #         )
 STATICFILES_DIRS=[(os.path.join(BASE_DIR,'static'))]
+print(STATICFILES_DIRS)

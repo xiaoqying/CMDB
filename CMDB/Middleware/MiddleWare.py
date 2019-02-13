@@ -12,7 +12,7 @@ from django.utils.deprecation import MiddlewareMixin
 #CBV
 # @method_decorator(auth,name='dispatch')
 class Order(MiddlewareMixin):
-    white_list = ['/login/','/register/']
+    white_list = ['/login/','/register/','/admin/','/admin/login/?next=/admin/']
     def process_request(self, request):
         url = request.path_info
         if not  url in self.white_list   :

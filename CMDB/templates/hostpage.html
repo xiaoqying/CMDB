@@ -1,74 +1,84 @@
 {% extends "base.html" %}
 {% block title %}主机界面{% endblock %}
 {% block hostpage %}
-<div class="bs-example " data-example-id="hoverable-table">
-<h1 align="center">服务器列表</h1><hr>
-<table class="table table-hover">
-  <thead>
-      <a href="/add/">
-        <button class="btn btn-primary btn-ll">新增</button>
-    </a>
-    <form action="/salt/">
-        <input name="name" type="text" value="1" style="display: none">&nbsp;&nbsp;
-        <input type="submit" class="btn btn-primary btn-ll"  value="刷新">
-    </form>
-    <tr>
-      <th>序号</th>
-      <th>主机名</th>
-      <th>IP地址</th>
-      <th>操作系统</th>
-      <th>CPU</th>
-      <th>磁盘</th>
-      <th>内存</th>
-      <th>区域</th>
-      <th>机房</th>
-      <th>操作</th>
-    </tr>
-  </thead>
-  <tbody>
-        <tr>
-            {% for i in obj_li %}
-                <th scope="row">{{ i.id }}</th>
-                <td>{{ i.hostname }}</td>
-                <td>{{ i.ipaddress }}</td>
-                <td>{{ i.system }}</td>
-                <td>{{ i.cpu }}</td>
-                <td>{{ i.disk }}</td>
-                <td>{{ i.mem }}</td>
-                <td>{{ i.region }}</td>
-                <td>{{ i.computer_room}}</td>
-                <td>
-                    <a href="/update/{{ i.id }}/"><button class="btn btn-primary btn-ll">修改</button></a>|
-                    <a href="/delete?id={{ i.id }}"><button class="btn btn-primary btn-ll">删除</button></a>
-                </td>
-        </tr>
-            {% endfor %}
-  </tbody>
-</table>
+<div class="orders">
+    <div class="row">
+        <div class="col-xl-8">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="box-title">主机列表 </h4>
+                <hr>
+                    {% if '/host/add/' in permission_list %}
+                        <a href="/host/add/"><button class="btn btn-primary btn-sm">新增主机</button></a>
+                        <input type="text" placeholder="搜索功能未启用" style="float: right"/>
+                        <button class="btn btn-primary btn-sm" style="float: right">搜索</button>
+                    {% endif %}
+                </div>
 
-<div class="pagination">
-    <span class="step-links">
-        <a href="?page={{ 1 }}">首页</a>
-        {% if obj_li.has_previous %}
-            <a href="?page={{ obj_li.previous_page_number }}">上一页</a>
-        {% endif %}
+                <div class="card-body--">
 
-        {% for num in p.page_range %}
-            {% if num == get_page %}
-                <a href="?page={{ num }}">{{ num }}</a>
-            {% else %}
-                <a href="?page={{ num }}">{{ num }}</a>
+                    <div class="table-stats order-table ov-h">
+                        <table class="table ">
+                            <thead>
+                                <tr>
+{#                                    <th class="serial">序号</th>#}
+                                    <th class="avatar">主机名</th>
+                                    <th>IP地址</th>
+                                    <th>操作系统</th>
+                                    <th>CPU</th>
+                                    <th>磁盘</th>
+                                    <th>内存</th>
+                                    <th>区域</th>
+                                    <th>机房</th>
+                                    <th>操作</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for i in obj_li %}
+                                <tr>
+{#                                    <th scope="row" class="serial">{{ i.id }}</th>#}
+                                    <td class="serial">{{ i.hostname }}</td>
+                                    <td class="serial">{{ i.ipaddress }}</td>
+                                    <td class="serial">{{ i.system }}</td>
+                                    <td class="serial">{{ i.cpu }}</td>
+                                    <td class="serial">{{ i.disk }}</td>
+                                    <td class="serial">{{ i.mem }}</td>
+                                    <td class="serial">{{ i.region }}</td>
+                                    <td class="serial">{{ i.computer_room}}</td>
+                                    <td>
+                                        <a href="/host/update/{{ i.id }}/"><button class="btn btn-primary btn-sm">修改</button></a>
+                                        {% if '/host/delete' in permission_list %}
+                                        <a href="/host/delete?id={{ i.id }}"><button class="btn btn-primary btn-sm">删除</button></a>
+                                        {% endif %}
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                            <div class="pagination">
+                                <span class="step-links">
+                                    <a href="?page={{ 1 }}">首页</a>
+                                    {% if obj_li.has_previous %}
+                                        <a href="?page={{ obj_li.previous_page_number }}">上一页</a>
+                                    {% endif %}
 
-            {% endif %}
-        {% endfor %}
-        {% if obj_li.has_next %}
-            <a href="?page={{ obj_li.next_page_number }}">下一页</a>
-        {% endif %}
-        <a href="?page={{ last_page }}">末页</a>
-
-
-    </span>
+                                    {% for num in p.page_range %}
+                                        {% if num == get_page %}
+                                            <a href="?page={{ num }}">{{ num }}</a>
+                                        {% else %}
+                                            <a href="?page={{ num }}">{{ num }}</a>
+                                        {% endif %}
+                                    {% endfor %}
+                                    {% if obj_li.has_next %}
+                                        <a href="?page={{ obj_li.next_page_number }}">下一页</a>
+                                    {% endif %}
+                                    <a href="?page={{ last_page }}">末页</a>
+                                </span>
+                            </div>
+                    </div> <!-- /.table-stats -->
+                </div>
+            </div> <!-- /.card -->
+        </div>  <!-- /.col-lg-8 -->
+    </div>
 </div>
-</div>
-
 {% endblock %}

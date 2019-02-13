@@ -4,16 +4,22 @@ from django.forms import widgets
 from host import models
 
 class UserForm(forms.Form):
-    user = fields.CharField(error_messages={'required':'用户名不能为空'})
+    user = fields.CharField(
+        error_messages={'required':'用户名不能为空'},
+        widget=widgets.TextInput(attrs={'class': 'form-control'})
+    )
     pwd = fields.CharField(
         max_length=10,
         min_length=4,
         error_messages={'required':'用户名不能为空'},
-        widget=widgets.PasswordInput(attrs={'class': 'form-contorl'})
+        widget=widgets.PasswordInput(attrs={'class': 'form-control'})
     )
 #注册form
 class RegisterForm(forms.Form):
-    username = fields.CharField(error_messages={'required': '用户名不能为空'})
+    username = fields.CharField(
+        error_messages={'required': '用户名不能为空'},
+        widget=widgets.TextInput(attrs={'class': 'form-control'})
+    )
     # user = forms.CharField()
     password = fields.CharField(
         max_length=10,
@@ -95,3 +101,4 @@ class HostForm(forms.Form):
         self.fields['computer_room_id'].choices = models.ComputerRoom.objects.values_list('id', 'name')
         self.fields['region_id'].choices = models.Region.objects.values_list('id', 'name')
         # print('-----------',models.Region.objects.values_list('id', 'name'))
+

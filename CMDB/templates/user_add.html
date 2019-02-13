@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block title %}主机界面{% endblock %}
+{% block host_add %}
+<div class="bs-example " data-example-id="hoverable-table">
+<form  method="post">
+    <table class="table table-hover">
+      <thead>
+        <h1 align="center">服务器列表</h1>
+        <tr>
+           <th>主机名</th>
+          <th>IP地址</th>
+          <th>操作系统</th>
+          <th>CPU</th>
+          <th>磁盘</th>
+          <th>内存</th>
+          <th>区域</th>
+          <th>机房</th>
+        </tr>
+      </thead>
+      <tbody>
+            <tr>
+             <td id="user">{{ form.hostname }}{{ form.errors.hostname.0 }}</td>
+             <td id="pwd">{{ form.ipaddress }}{{ form.errors.ipaddress.0 }}</td>
+             <td id="system">{{ form.system }}{{ form.errors.system.0 }}</td>
+             <td id="cpu">{{ form.cpu }}{{ form.errors.cpu.0 }}</td>
+             <td id="mem">{{ form.mem }}{{ form.errors.mem.0 }}</td>
+             <td id="disk">{{ form.disk }}{{ form.errors.disk.0 }}</td>
+             <td id="region">{{ form.region_id }}{{ form.errors.region_id.0 }}</td>
+             <td id="region">{{ form.computer_room_id }}{{ form.errors.computer_room_id.0 }}</td>
+            </tr>
+      </tbody>
+    </table>
+    <p>
+        <input type="submit" name="提交" class="btn btn-primary btn-ll">
+        <a class="btn btn-primary btn-ll" href="/host/hostpage" >返回</a>
+    </p>
+</form>
+</div>
+{% endblock %}

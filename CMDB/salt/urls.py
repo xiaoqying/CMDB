@@ -4,5 +4,4 @@ from salt import views
 
 urlpatterns = [
     url(r'',views.apilist.as_view()),
-
 ]

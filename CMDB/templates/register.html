@@ -73,7 +73,7 @@
     <h1>用户注册</h1>
                     <span style="display: inline-block;color: red ">{{ form.errors.err }}{{ error_msg }}</span>
 {#                    <span style="display: inline-block;color: red ">{{ error_msg }}</span>#}
-    <form method="post" action="/register/" novalidate>
+    <form method="post" action="/host/register/" novalidate>
         <p>用户名：{{ form.username }}{{ form.errors.username.0 }}</p>
         <p>密码：{{ form.password }}{{ form.errors.password.0 }}</p>
         <p>确认密码：{{ form.pwd2 }}{{ form.errors.pwd2.0 }}</p>

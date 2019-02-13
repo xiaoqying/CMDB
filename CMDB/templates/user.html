@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block title %}用户界面{% endblock %}
+{% block user_page %}
+{#    {% for i in obj %}#}
+<div class="orders">
+    <div class="row">
+        <div class="col-xl-8">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="box-title">用户列表 </h4>
+                <hr>
+                        <a href="#"><button class="btn btn-primary btn-sm">新增用户</button></a>
+                        <input type="text" placeholder="搜索功能未启用" style="float: right"/>
+                        <button class="btn btn-primary btn-sm" style="float: right">搜索</button>
+                </div>
+
+                <div class="card-body--">
+
+                    <div class="table-stats order-table ov-h">
+                        <table class="table ">
+                            <thead>
+                                <tr>
+                                    <th class="avatar">用户名</th>
+                                    <th>权限</th>
+                                    <th>操作</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for i in obj %}
+                                <tr>
+{#                                    <th scope="row" class="serial">{{ i.id }}</th>#}
+                                    <td class="serial">{{ i }}</td>
+                                    <td >
+                                        <a href="#" ><button class="btn btn-primary btn-sm" >修改</button></a>
+                                        <a href="#" ><button class="btn btn-primary btn-sm" >删除</button></a>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div> <!-- /.table-stats -->
+                </div>
+            </div> <!-- /.card -->
+        </div>  <!-- /.col-lg-8 -->
+    </div>
+</div>
+{#    {% endfor %}#}
+{% endblock %}
