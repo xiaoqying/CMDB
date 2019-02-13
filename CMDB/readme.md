@@ -34,12 +34,14 @@
 - windows启动
   + python manage.py runserver 127.0.0.1:8080
 - 登录用户名密码
-  + admin,admin  
+  + test 123456789
+  + 后台：admin admin123456
+- 访问login页面 127.0.0.1:8080/host/login 
 ## host目录
 - modles.py
   + 建立数据库表结构
     + 使用了一对多ForeignKey
-    + 未使用多对多ManyToManyField
+    + 权限表使用了多对多ManyToManyField
 - urls.py
   + 定义host相关url
     + 增
@@ -69,6 +71,7 @@
 - 其他暂未使用
 ## static目录
 - 该目录下存放bootstrap文件，用于前端渲染
+- 存放了bootstrap模板  可以测试使用
 ## templates目录
 - add.html 
   + 用于hostpage中‘新增数据’的功能
@@ -91,8 +94,11 @@
   + HostForm 资产信息表单
 - send_salt_api.py
   + 用于与远程客户端进行通讯，并返回saltapi的数据
-  
+- init_menu.py
+  + 用于初始化用户权限信息
+## user目录
+- urls.py 存放url
+- views.py 定义对应功能
   
 ## 存在的问题BUG
-- 启动该项目，必须连接salt服务器端，不然无法启动
-- 其他待测试
+- 很多功能都有缺陷 仅供参考 
